@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import RxSwift
-import JSONWebToken
 
 public typealias LHCoreJWTResults = (json: JSON?, result: String)
 
@@ -91,7 +90,7 @@ public extension LHCoreApiPayload {
                 throw NSError(domain: "LHCoreRxAPIService.decodeJWT", code: -1, userInfo: ["message": "SecretKey data is invalid"])
             }
             
-            let encodedString = JWTencode(claims: ClaimSet(claims: self), algorithm: Algorithm.hs256(secretData))
+            let encodedString = JWTencode(claims: JWTClaimSet(claims: self), algorithm: JWTAlgorithm.hs256(secretData))
             return ["value": encodedString]
         } catch let error {
             throw error
@@ -116,7 +115,7 @@ public extension String {
             }
             
             let jwtString = (self as NSString).replacingOccurrences(of: "\"", with: "")
-            let claims: ClaimSet = try JWTdecode(jwtString, algorithm: .hs256(secretData))
+            let claims: JWTClaimSet = try JWTdecode(jwtString, algorithm: .hs256(secretData))
             return claims.claims
         } catch let error {
             throw error

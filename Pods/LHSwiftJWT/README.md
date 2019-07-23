@@ -1,6 +1,4 @@
-# JSON Web Token
-
-[![Build Status](http://img.shields.io/travis/kylef/JSONWebToken.swift/master.svg?style=flat)](https://travis-ci.org/kylef/JSONWebToken.swift)
+# LHSwiftJWT
 
 Swift implementation of [JSON Web Token](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 
@@ -9,7 +7,7 @@ Swift implementation of [JSON Web Token](https://tools.ietf.org/html/draft-ietf-
 [CocoaPods](http://cocoapods.org/) is the recommended installation method.
 
 ```ruby
-pod 'JSONWebToken'
+pod 'LHSwiftJWT'
 ```
 
 ## Usage
@@ -95,4 +93,4 @@ This library supports the following algorithms:
 
 ## License
 
-JSONWebToken is licensed under the BSD license. See [LICENSE](LICENSE) for more info.
+LHSwiftJWT is licensed under the BSD license. See [LICENSE](LICENSE) for more info.

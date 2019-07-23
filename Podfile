@@ -7,7 +7,7 @@ def pods_project
   pod 'AlamofireImage'
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'JSONWebToken', :git => 'https://github.com/laohac8x/JSONWebToken.git', :inhibit_warnings => true
+  pod 'LHSwiftJWT', :git => 'https://github.com/laohac8x/LHSwiftJWT.git', :inhibit_warnings => true
 end
 
 target 'LHCoreRxApiJWTExts iOS' do

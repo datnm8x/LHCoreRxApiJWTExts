@@ -100,7 +100,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			<key>License</key>
 			<string>MIT</string>
 			<key>Title</key>
-			<string>JSONWebToken</string>
+			<string>LHSwiftJWT</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

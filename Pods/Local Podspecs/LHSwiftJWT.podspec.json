@@ -1,9 +1,9 @@
 {
-  "name": "JSONWebToken",
-  "version": "2.2.0",
-  "summary": "A short description of JSONWebToken.",
+  "name": "LHSwiftJWT",
+  "version": "1.0",
+  "summary": "A short description of LHSwiftJWT.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/laohac8x/JSONWebToken",
+  "homepage": "https://github.com/laohac8x/LHSwiftJWT",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,8 +12,8 @@
     "laohac8x": "laohac83x@gmail.com"
   },
   "source": {
-    "git": "https://github.com/laohac8x/JSONWebToken.git",
-    "tag": "2.2.0"
+    "git": "https://github.com/laohac8x/LHSwiftJWT.git",
+    "tag": "1.0"
   },
   "platforms": {
     "ios": "9.0"

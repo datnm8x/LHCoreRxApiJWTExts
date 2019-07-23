@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct JOSEHeader {
+struct JWTJOSEHeader {
   var parameters: [String: Any]
 
   init(parameters: [String: Any]) {

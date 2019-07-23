@@ -1,9 +1,9 @@
 import Foundation
 
-public typealias Payload = [String: Any]
+public typealias JWTPayload = [String: Any]
 
 /// The supported Algorithms
-public enum Algorithm: CustomStringConvertible {
+public enum JWTAlgorithm: CustomStringConvertible {
   /// No Algorithm, i-e, insecure
   case none
 
@@ -31,7 +31,7 @@ public enum Algorithm: CustomStringConvertible {
 
   /// Sign a message using the algorithm
   func sign(_ message: String) -> String {
-    func signHS(_ key: Data, algorithm: HMACAlgorithm) -> String {
+    func signHS(_ key: Data, algorithm: JWTHMACAlgorithm) -> String {
       let messageData = message.data(using: String.Encoding.utf8, allowLossyConversion: false)!
       return JWTbase64encode(JWThmac(algorithm: algorithm, key: key, message: messageData))
     }

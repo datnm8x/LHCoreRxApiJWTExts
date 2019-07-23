@@ -1,0 +1,6 @@
+framework module LHSwiftJWT {
+  umbrella header "LHSwiftJWT-umbrella.h"
+
+  export *
+  module * { export * }
+}

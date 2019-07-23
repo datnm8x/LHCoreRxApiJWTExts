@@ -5,7 +5,7 @@ import Foundation
  - parameter algorithm: The algorithm to sign the payload with
  - returns: The JSON web token as a String
  */
-public func JWTencode(claims: ClaimSet, algorithm: Algorithm, headers: [String: String]? = nil) -> String {
+public func JWTencode(claims: JWTClaimSet, algorithm: JWTAlgorithm, headers: [String: String]? = nil) -> String {
   func encodeJSON(_ payload: [String: Any]) -> String? {
     if let data = try? JSONSerialization.data(withJSONObject: payload) {
       return JWTbase64encode(data)
@@ -32,14 +32,14 @@ public func JWTencode(claims: ClaimSet, algorithm: Algorithm, headers: [String: 
  - parameter algorithm: The algorithm to sign the payload with
  - returns: The JSON web token as a String
  */
-public func JWTencode(claims: [String: Any], algorithm: Algorithm, headers: [String: String]? = nil) -> String {
-  return JWTencode(claims: ClaimSet(claims: claims), algorithm: algorithm, headers: headers)
+public func JWTencode(claims: [String: Any], algorithm: JWTAlgorithm, headers: [String: String]? = nil) -> String {
+  return JWTencode(claims: JWTClaimSet(claims: claims), algorithm: algorithm, headers: headers)
 }
 
 
 /// Encode a set of claims using the builder pattern
-public func JWTencode(_ algorithm: Algorithm, closure: ((ClaimSetBuilder) -> Void)) -> String {
-  let builder = ClaimSetBuilder()
+public func JWTencode(_ algorithm: JWTAlgorithm, closure: ((JWTClaimSetBuilder) -> Void)) -> String {
+  let builder = JWTClaimSetBuilder()
   closure(builder)
   return JWTencode(claims: builder.claims, algorithm: algorithm)
 }

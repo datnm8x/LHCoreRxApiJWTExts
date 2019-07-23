@@ -47,7 +47,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-## JSONWebToken
+## LHSwiftJWT
 
 Copyright (c) 2015, Kyle Fuller
 All rights reserved.

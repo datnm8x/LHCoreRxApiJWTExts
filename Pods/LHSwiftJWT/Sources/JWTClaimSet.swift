@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ClaimSet {
+public struct JWTClaimSet {
   public private(set) var claims: [String: Any]
 
   public init(claims: [String: Any]? = nil) {
@@ -25,7 +25,7 @@ public struct ClaimSet {
 
 // MARK: Accessors
 
-extension ClaimSet {
+extension JWTClaimSet {
   public var issuer: String? {
     get {
       return claims["iss"] as? String
@@ -92,7 +92,7 @@ extension ClaimSet {
 
 // MARK: Validations
 
-extension ClaimSet {
+extension JWTClaimSet {
   public func validate(audience: String? = nil, issuer: String? = nil, leeway: TimeInterval = 0) throws {
     if let issuer = issuer {
       try validateIssuer(issuer)
@@ -110,24 +110,24 @@ extension ClaimSet {
   public func validateAudience(_ audience: String) throws {
     if let aud = self["aud"] as? [String] {
       if !aud.contains(audience) {
-        throw InvalidToken.invalidAudience
+        throw JWTInvalidToken.invalidAudience
       }
     } else if let aud = self["aud"] as? String {
       if aud != audience {
-        throw InvalidToken.invalidAudience
+        throw JWTInvalidToken.invalidAudience
       }
     } else {
-      throw InvalidToken.decodeError("Invalid audience claim, must be a string or an array of strings")
+      throw JWTInvalidToken.decodeError("Invalid audience claim, must be a string or an array of strings")
     }
   }
 
   public func validateIssuer(_ issuer: String) throws {
     if let iss = self["iss"] as? String {
       if iss != issuer {
-        throw InvalidToken.invalidIssuer
+        throw JWTInvalidToken.invalidIssuer
       }
     } else {
-      throw InvalidToken.invalidIssuer
+      throw JWTInvalidToken.invalidIssuer
     }
   }
 
@@ -146,8 +146,8 @@ extension ClaimSet {
 
 // MARK: Builder
 
-public class ClaimSetBuilder {
-  var claims = ClaimSet()
+public class JWTClaimSetBuilder {
+  var claims = JWTClaimSet()
 
   public var issuer: String? {
     get {
@@ -210,4 +210,4 @@ public class ClaimSetBuilder {
   }
 }
 
-typealias PayloadBuilder = ClaimSetBuilder
+typealias JWTPayloadBuilder = JWTClaimSetBuilder

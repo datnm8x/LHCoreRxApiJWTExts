@@ -21,6 +21,15 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		081AD3F722E6EDB90091BB8C /* JWTClaimSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081AD3EE22E6EDB90091BB8C /* JWTClaimSet.swift */; };
+		081AD3F822E6EDB90091BB8C /* JWTJOSEHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081AD3EF22E6EDB90091BB8C /* JWTJOSEHeader.swift */; };
+		081AD3F922E6EDB90091BB8C /* JWTEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081AD3F022E6EDB90091BB8C /* JWTEncode.swift */; };
+		081AD3FA22E6EDB90091BB8C /* JWTHMACCommonCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081AD3F122E6EDB90091BB8C /* JWTHMACCommonCrypto.swift */; };
+		081AD3FB22E6EDB90091BB8C /* LHSwiftJWT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081AD3F222E6EDB90091BB8C /* LHSwiftJWT.swift */; };
+		081AD3FC22E6EDB90091BB8C /* JWTDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081AD3F322E6EDB90091BB8C /* JWTDecode.swift */; };
+		081AD3FD22E6EDB90091BB8C /* JWTClaims.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081AD3F422E6EDB90091BB8C /* JWTClaims.swift */; };
+		081AD3FE22E6EDB90091BB8C /* JWTBase64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081AD3F522E6EDB90091BB8C /* JWTBase64.swift */; };
+		081AD3FF22E6EDB90091BB8C /* JWTHMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081AD3F622E6EDB90091BB8C /* JWTHMAC.swift */; };
 		08387C1C228185B200F37E16 /* LHCoreRxAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08387C13228185B100F37E16 /* LHCoreRxAPIService.swift */; };
 		08387C1F228185B200F37E16 /* LHCoreRxKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08387C16228185B200F37E16 /* LHCoreRxKeyboard.swift */; };
 		083BD8B4227FE43A000C215D /* RxLHExtensions_UTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083BD8A8227FE439000C215D /* RxLHExtensions_UTests.swift */; };
@@ -71,6 +80,15 @@
 
 /* Begin PBXFileReference section */
 		08132C5C22813567004DD791 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
+		081AD3EE22E6EDB90091BB8C /* JWTClaimSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWTClaimSet.swift; path = LHSwiftJWT/Source/JWTClaimSet.swift; sourceTree = SOURCE_ROOT; };
+		081AD3EF22E6EDB90091BB8C /* JWTJOSEHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWTJOSEHeader.swift; path = LHSwiftJWT/Source/JWTJOSEHeader.swift; sourceTree = SOURCE_ROOT; };
+		081AD3F022E6EDB90091BB8C /* JWTEncode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWTEncode.swift; path = LHSwiftJWT/Source/JWTEncode.swift; sourceTree = SOURCE_ROOT; };
+		081AD3F122E6EDB90091BB8C /* JWTHMACCommonCrypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWTHMACCommonCrypto.swift; path = LHSwiftJWT/Source/JWTHMACCommonCrypto.swift; sourceTree = SOURCE_ROOT; };
+		081AD3F222E6EDB90091BB8C /* LHSwiftJWT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LHSwiftJWT.swift; path = LHSwiftJWT/Source/LHSwiftJWT.swift; sourceTree = SOURCE_ROOT; };
+		081AD3F322E6EDB90091BB8C /* JWTDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWTDecode.swift; path = LHSwiftJWT/Source/JWTDecode.swift; sourceTree = SOURCE_ROOT; };
+		081AD3F422E6EDB90091BB8C /* JWTClaims.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWTClaims.swift; path = LHSwiftJWT/Source/JWTClaims.swift; sourceTree = SOURCE_ROOT; };
+		081AD3F522E6EDB90091BB8C /* JWTBase64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWTBase64.swift; path = LHSwiftJWT/Source/JWTBase64.swift; sourceTree = SOURCE_ROOT; };
+		081AD3F622E6EDB90091BB8C /* JWTHMAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JWTHMAC.swift; path = LHSwiftJWT/Source/JWTHMAC.swift; sourceTree = SOURCE_ROOT; };
 		08387C13228185B100F37E16 /* LHCoreRxAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHCoreRxAPIService.swift; sourceTree = "<group>"; };
 		08387C16228185B200F37E16 /* LHCoreRxKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LHCoreRxKeyboard.swift; sourceTree = "<group>"; };
 		083BD8A8227FE439000C215D /* RxLHExtensions_UTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxLHExtensions_UTests.swift; sourceTree = "<group>"; };
@@ -145,6 +163,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		081AD3A522E6E2D50091BB8C /* LHSwiftJWT */ = {
+			isa = PBXGroup;
+			children = (
+				081AD3F522E6EDB90091BB8C /* JWTBase64.swift */,
+				081AD3F422E6EDB90091BB8C /* JWTClaims.swift */,
+				081AD3EE22E6EDB90091BB8C /* JWTClaimSet.swift */,
+				081AD3F322E6EDB90091BB8C /* JWTDecode.swift */,
+				081AD3F022E6EDB90091BB8C /* JWTEncode.swift */,
+				081AD3F622E6EDB90091BB8C /* JWTHMAC.swift */,
+				081AD3F122E6EDB90091BB8C /* JWTHMACCommonCrypto.swift */,
+				081AD3EF22E6EDB90091BB8C /* JWTJOSEHeader.swift */,
+				081AD3F222E6EDB90091BB8C /* LHSwiftJWT.swift */,
+			);
+			name = LHSwiftJWT;
+			sourceTree = "<group>";
+		};
 		08C0FF14227FEEEF0078F5AE /* Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +303,7 @@
 				08AAF1FD22BC716800A883C2 /* LHCoreRxListViewModel.swift */,
 				08AAF20222BC71A900A883C2 /* LHCoreListViewDataSource.swift */,
 				08C0558A22BCD0D700FBB84D /* LHCoreListFormViewModel.swift */,
+				081AD3A522E6E2D50091BB8C /* LHSwiftJWT */,
 				F8111E3619A95C8B0040E7D1 /* Supporting Files */,
 			);
 			path = Source;
@@ -589,11 +624,20 @@
 			files = (
 				08AAF20022BC716800A883C2 /* LHCoreRxListViewModel.swift in Sources */,
 				08C0558B22BCD0D700FBB84D /* LHCoreListFormViewModel.swift in Sources */,
+				081AD3FA22E6EDB90091BB8C /* JWTHMACCommonCrypto.swift in Sources */,
 				08387C1C228185B200F37E16 /* LHCoreRxAPIService.swift in Sources */,
+				081AD3F922E6EDB90091BB8C /* JWTEncode.swift in Sources */,
+				081AD3F722E6EDB90091BB8C /* JWTClaimSet.swift in Sources */,
+				081AD3FF22E6EDB90091BB8C /* JWTHMAC.swift in Sources */,
+				081AD3FD22E6EDB90091BB8C /* JWTClaims.swift in Sources */,
+				081AD3F822E6EDB90091BB8C /* JWTJOSEHeader.swift in Sources */,
 				08AAF1FF22BC716800A883C2 /* LHCoreRxExtensions.swift in Sources */,
 				4B5C8F8C22E5FAC7001F9796 /* LHCoreRxApiWithJWT.swift in Sources */,
+				081AD3FB22E6EDB90091BB8C /* LHSwiftJWT.swift in Sources */,
 				08AAF20322BC71A900A883C2 /* LHCoreListViewDataSource.swift in Sources */,
+				081AD3FC22E6EDB90091BB8C /* JWTDecode.swift in Sources */,
 				08387C1F228185B200F37E16 /* LHCoreRxKeyboard.swift in Sources */,
+				081AD3FE22E6EDB90091BB8C /* JWTBase64.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

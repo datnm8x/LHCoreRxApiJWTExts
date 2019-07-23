@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double JSONWebTokenVersionNumber;
-FOUNDATION_EXPORT const unsigned char JSONWebTokenVersionString[];
+FOUNDATION_EXPORT double LHSwiftJWTVersionNumber;
+FOUNDATION_EXPORT const unsigned char LHSwiftJWTVersionString[];
 

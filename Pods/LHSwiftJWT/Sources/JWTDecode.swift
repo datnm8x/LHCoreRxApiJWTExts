@@ -2,7 +2,7 @@ import Foundation
 
 
 /// Failure reasons from decoding a JWT
-public enum InvalidToken: CustomStringConvertible, Error {
+public enum JWTInvalidToken: CustomStringConvertible, Error {
   /// Decoding the JWT itself failed
   case decodeError(String)
 
@@ -47,7 +47,7 @@ public enum InvalidToken: CustomStringConvertible, Error {
 
 
 /// Decode a JWT
-public func JWTdecode(_ jwt: String, algorithms: [Algorithm], verify: Bool = true, audience: String? = nil, issuer: String? = nil, leeway: TimeInterval = 0) throws -> ClaimSet {
+public func JWTdecode(_ jwt: String, algorithms: [JWTAlgorithm], verify: Bool = true, audience: String? = nil, issuer: String? = nil, leeway: TimeInterval = 0) throws -> JWTClaimSet {
   let (header, claims, signature, signatureInput) = try JWTload(jwt)
 
   if verify {
@@ -59,16 +59,16 @@ public func JWTdecode(_ jwt: String, algorithms: [Algorithm], verify: Bool = tru
 }
 
 /// Decode a JWT
-public func JWTdecode(_ jwt: String, algorithm: Algorithm, verify: Bool = true, audience: String? = nil, issuer: String? = nil, leeway: TimeInterval = 0) throws -> ClaimSet {
+public func JWTdecode(_ jwt: String, algorithm: JWTAlgorithm, verify: Bool = true, audience: String? = nil, issuer: String? = nil, leeway: TimeInterval = 0) throws -> JWTClaimSet {
   return try JWTdecode(jwt, algorithms: [algorithm], verify: verify, audience: audience, issuer: issuer, leeway: leeway)
 }
 
 // MARK: Parsing a JWT
 
-func JWTload(_ jwt: String) throws -> (header: JOSEHeader, payload: ClaimSet, signature: Data, signatureInput: String) {
+func JWTload(_ jwt: String) throws -> (header: JWTJOSEHeader, payload: JWTClaimSet, signature: Data, signatureInput: String) {
   let segments = jwt.components(separatedBy: ".")
   if segments.count != 3 {
-    throw InvalidToken.decodeError("Not enough segments")
+    throw JWTInvalidToken.decodeError("Not enough segments")
   }
 
   let headerSegment = segments[0]
@@ -77,36 +77,36 @@ func JWTload(_ jwt: String) throws -> (header: JOSEHeader, payload: ClaimSet, si
   let signatureInput = "\(headerSegment).\(payloadSegment)"
 
   guard let headerData = JWTbase64decode(headerSegment) else {
-    throw InvalidToken.decodeError("Header is not correctly encoded as base64")
+    throw JWTInvalidToken.decodeError("Header is not correctly encoded as base64")
   }
 
-  let header = (try? JSONSerialization.jsonObject(with: headerData, options: JSONSerialization.ReadingOptions(rawValue: 0))) as? Payload
+  let header = (try? JSONSerialization.jsonObject(with: headerData, options: JSONSerialization.ReadingOptions(rawValue: 0))) as? JWTPayload
   if header == nil {
-    throw InvalidToken.decodeError("Invalid header")
+    throw JWTInvalidToken.decodeError("Invalid header")
   }
 
   let payloadData = JWTbase64decode(payloadSegment)
   if payloadData == nil {
-    throw InvalidToken.decodeError("Payload is not correctly encoded as base64")
+    throw JWTInvalidToken.decodeError("Payload is not correctly encoded as base64")
   }
 
-  let payload = (try? JSONSerialization.jsonObject(with: payloadData!, options: JSONSerialization.ReadingOptions(rawValue: 0))) as? Payload
+  let payload = (try? JSONSerialization.jsonObject(with: payloadData!, options: JSONSerialization.ReadingOptions(rawValue: 0))) as? JWTPayload
   if payload == nil {
-    throw InvalidToken.decodeError("Invalid payload")
+    throw JWTInvalidToken.decodeError("Invalid payload")
   }
 
   guard let signature = JWTbase64decode(signatureSegment) else {
-    throw InvalidToken.decodeError("Signature is not correctly encoded as base64")
+    throw JWTInvalidToken.decodeError("Signature is not correctly encoded as base64")
   }
 
-  return (header: JOSEHeader(parameters: header!), payload: ClaimSet(claims: payload!), signature: signature, signatureInput: signatureInput)
+  return (header: JWTJOSEHeader(parameters: header!), payload: JWTClaimSet(claims: payload!), signature: signature, signatureInput: signatureInput)
 }
 
 // MARK: Signature Verification
 
-func JWTverifySignature(_ algorithms: [Algorithm], header: JOSEHeader, signingInput: String, signature: Data) throws {
+func JWTverifySignature(_ algorithms: [JWTAlgorithm], header: JWTJOSEHeader, signingInput: String, signature: Data) throws {
   guard let alg = header.algorithm else {
-    throw InvalidToken.decodeError("Missing Algorithm")
+    throw JWTInvalidToken.decodeError("Missing Algorithm")
   }
 
   let verifiedAlgorithms = algorithms
@@ -114,6 +114,6 @@ func JWTverifySignature(_ algorithms: [Algorithm], header: JOSEHeader, signingIn
     .filter { algorithm in algorithm.verify(signingInput, signature: signature) }
 
   if verifiedAlgorithms.isEmpty {
-    throw InvalidToken.invalidAlgorithm
+    throw JWTInvalidToken.invalidAlgorithm
   }
 }
