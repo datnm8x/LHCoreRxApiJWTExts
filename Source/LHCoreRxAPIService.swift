@@ -19,6 +19,8 @@ public struct LHCoreApiDefault {
     public static var startPage = 0
     public static var pageSize = 10
     public static var timeZone = 9
+    public static var startId: Int64 = 0
+    public static var nonItemId: Int64 = -1
 }
 
 // MARK: - Alamofire Manager for custom
@@ -30,6 +32,10 @@ public struct LHCoreErrorCodes {
     public static let badURLStatusCode = -9001
     public static let emptyResponseData = -9002
     public static let unKnow = -9003
+    public static let userCancel = -9004
+    public static let hasRequesting = -9005
+    public static let noMoreData = -9006
+    public static let noFunction = -9007
 }
 
 // MARK: main class for LHAPIService base
@@ -119,7 +125,7 @@ open class LHCoreRxAPIService: NSObject {
             var countData: UInt = 0
             multiDatas.forEach({ dataExt in
                 countData += 1
-                let fileName = String.isEmptyString(dataExt.name) ? "file\(countData)" : dataExt.name
+                let fileName = String.coreApiIsEmptyString(dataExt.name) ? "file\(countData)" : dataExt.name
                 let fileNameExt = (fileName as NSString).appendingPathExtension(dataExt.fileExtension) ?? fileName
                 multipartFormData.append(dataExt.data, withName: dataExt.name, fileName: fileNameExt, mimeType: dataExt.mimeType)
             })
@@ -214,7 +220,7 @@ open class LHCoreRxAPIService: NSObject {
                 var countData: UInt = 0
                 multiDatas.forEach({ dataExt in
                     countData += 1
-                    let fileName = String.isEmptyString(dataExt.name) ? "file\(countData)" : dataExt.name
+                    let fileName = String.coreApiIsEmptyString(dataExt.name) ? "file\(countData)" : dataExt.name
                     let fileNameExt = (fileName as NSString).appendingPathExtension(dataExt.fileExtension) ?? fileName
                     multipartFormData.append(dataExt.data, withName: dataExt.name, fileName: fileNameExt, mimeType: dataExt.mimeType)
                     print(fileNameExt)
@@ -280,11 +286,11 @@ extension String {
         if let url = URL(string: LHCoreRxAPIService.apiBaseURLString)?.appendingPathComponent(self) {
             return url.absoluteString
         } else {
-            return LHCoreRxAPIService.apiBaseURLString.deleteSuffixPath + "/" + self.deletePrefixPath
+            return LHCoreRxAPIService.apiBaseURLString.coreApiDeleteSuffixPath + "/" + self.coreApiDeletePrefixPath
         }
     }
     
-    private var deletePrefixPath: String {
+    private var coreApiDeletePrefixPath: String {
         var result = self
         while result.hasPrefix("/") {
             result.removeFirst()
@@ -292,7 +298,7 @@ extension String {
         return result
     }
     
-    private var deleteSuffixPath: String {
+    private var coreApiDeleteSuffixPath: String {
         var result = self
         while result.hasSuffix("/") {
             result.removeLast()
@@ -300,7 +306,7 @@ extension String {
         return result
     }
     
-    internal static func isEmptyString(_ str: String?) -> Bool {
+    internal static func coreApiIsEmptyString(_ str: String?) -> Bool {
         guard let str = str else { return true }
         return str.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == ""
     }

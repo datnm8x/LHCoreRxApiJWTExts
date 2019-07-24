@@ -8,8 +8,8 @@
 
 import Foundation
 import UIKit
-import RxCocoa
 import RxSwift
+import RxCocoa
 
 open class LHCoreFormCellModel {
     open var section: Int = 0

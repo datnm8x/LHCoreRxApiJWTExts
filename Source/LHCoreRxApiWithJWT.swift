@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import RxSwift
 
-public typealias LHCoreJWTResults = (json: JSON?, result: String)
+public typealias LHCoreJWTResults = (json: JSON?, responseString: String)
 
 public extension LHCoreRxAPIService {
     // MARK: JSON JWT response ========================================================================
@@ -55,9 +55,9 @@ public extension LHCoreRxAPIService {
                     case .success(let resultString):
                         do {
                             let payload = try resultString.decodeJWT(secretKey: secretKeyJWT)
-                            observer.onNext((json: JSON(payload), result: resultString))
+                            observer.onNext((json: JSON(payload), responseString: resultString))
                         } catch {
-                            observer.onNext((json: nil, result: resultString))
+                            observer.onNext((json: nil, responseString: resultString))
                         }
                         
                     case .failure(let error):

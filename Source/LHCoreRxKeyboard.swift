@@ -8,8 +8,8 @@
 
 import UIKit
 import Foundation
-import RxCocoa
 import RxSwift
+import RxCocoa
 
 /// RxKeyboard provides a reactive way of observing keyboard frame changes.
 public class LHCoreRxKeyboard: NSObject {

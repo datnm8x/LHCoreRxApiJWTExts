@@ -8,8 +8,8 @@
 
 import Foundation
 import UIKit
-import RxCocoa
 import RxSwift
+import RxCocoa
 
 extension Reactive where Base: UIScrollView {
     /// Reactive wrapper for `scrollViewDidScrollToBottom` action

@@ -11,11 +11,6 @@ import UIKit
 
 public let errorUserCancelSearch = NSError(domain: "UserCancelledSearch", code: -1, userInfo: nil)
 
-public extension LHCoreErrorCodes {
-    static let userCancel = -9004
-    static let hasRequesting = -9005
-}
-
 public struct LHCoreListModel {
     internal enum ViewType {
         case table
@@ -50,6 +45,24 @@ public struct LHCoreListModel {
         
         case none
         case requesting(RequestType)
+    }
+    
+    public struct PagingParam<T> {
+        public var nextPage: Int64 = 0
+        public var lastItem: T?
+        public var pageSize: Int = LHCoreApiDefault.pageSize
+        internal var lastItemId: Int64?
+        
+        public init(_ nextPage: Int64 = 0, lastItem: T? = nil, pageSize: Int = LHCoreApiDefault.pageSize) {
+            self.nextPage = nextPage
+            self.lastItem = lastItem
+            self.pageSize = pageSize
+        }
+    }
+    
+    public enum PagingType {
+        case byPageNumber
+        case byLastItem
     }
 }
 
