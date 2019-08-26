@@ -20,7 +20,7 @@ public struct LHCoreApiDefault {
     public static var pageSize = 10
     public static var timeZone = 9
     public static var startId: Int64 = 0
-    public static var nonItemId: Int64 = -1
+    public static let nonItemId: Int64 = -1
 }
 
 // MARK: - Alamofire Manager for custom

@@ -47,15 +47,14 @@ public struct LHCoreListModel {
         case requesting(RequestType)
     }
     
-    public struct PagingParam<T> {
+    public struct PagingParam {
         public var nextPage: Int64 = 0
-        public var lastItem: T?
+        public var apiParams: LHCoreApiPayload?
         public var pageSize: Int = LHCoreApiDefault.pageSize
-        internal var lastItemId: Int64?
+        internal var lastItemId: Int64 = 0
         
-        public init(_ nextPage: Int64 = 0, lastItem: T? = nil, pageSize: Int = LHCoreApiDefault.pageSize) {
+        public init(_ nextPage: Int64 = 0, pageSize: Int = LHCoreApiDefault.pageSize) {
             self.nextPage = nextPage
-            self.lastItem = lastItem
             self.pageSize = pageSize
         }
     }
